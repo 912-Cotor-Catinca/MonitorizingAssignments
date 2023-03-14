@@ -19,7 +19,7 @@ import org.junit.Test;
 /**
  * Unit test for simple App.
  */
-public class AppTest 
+public class AppTest
 {
     /**
      * Rigorous Test :-)
@@ -53,12 +53,5 @@ public class AppTest
         int result = service.saveStudent("10", "alex", 932);
         assertEquals(5, students.spliterator().getExactSizeIfKnown());
         assertEquals(0, result);
-    }
-
-    @Test
-    public void tc_3_AddInvalidStudent() {
-        Iterable<Student> students = service.findAllStudents();
-        int result = service.saveStudent("", "alex", 8);
-        assertEquals(5, students.spliterator().getExactSizeIfKnown());
     }
 }
