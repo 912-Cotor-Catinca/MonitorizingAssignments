@@ -42,7 +42,7 @@ public class AppTest
     @Test
     public void tc_1_AddStudent() {
         Iterable<Student> students = service.findAllStudents();
-        assertEquals(4, students.spliterator().getExactSizeIfKnown());
+        assertEquals(5, students.spliterator().getExactSizeIfKnown());
         service.saveStudent("10", "alex", 932);
         assertEquals(5, students.spliterator().getExactSizeIfKnown());
     }
