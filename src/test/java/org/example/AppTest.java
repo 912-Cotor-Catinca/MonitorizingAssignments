@@ -10,10 +10,7 @@ import org.example.repository.NotaXMLRepository;
 import org.example.repository.StudentXMLRepository;
 import org.example.repository.TemaXMLRepository;
 import org.example.service.Service;
-import org.example.validation.NotaValidator;
-import org.example.validation.StudentValidator;
-import org.example.validation.TemaValidator;
-import org.example.validation.Validator;
+import org.example.validation.*;
 import org.junit.Test;
 
 /**
@@ -48,10 +45,24 @@ public class AppTest
     }
 
     @Test
+    public void tc_3_AddInvalidStudent() {
+        Iterable<Student> students = service.findAllStudents();
+        int result = 0;
+        try {
+            result = service.saveStudent("10", "alex", 8);
+            assertEquals(5, students.spliterator().getExactSizeIfKnown());
+            assertEquals(1, result);
+        }catch (ValidationException e) {
+            assertEquals(null, result);
+        }
+    }
+
+    @Test
     public void tc_2_AddExistingStudent() {
         Iterable<Student> students = service.findAllStudents();
         int result = service.saveStudent("10", "alex", 932);
         assertEquals(5, students.spliterator().getExactSizeIfKnown());
         assertEquals(0, result);
     }
+
 }
