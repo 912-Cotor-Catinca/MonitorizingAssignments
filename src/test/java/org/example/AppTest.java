@@ -65,4 +65,30 @@ public class AppTest
         assertEquals(0, result);
     }
 
+    @Test
+    public void tc_4_InvalidID() {
+        Iterable<Student> students = service.findAllStudents();
+        int result = 0;
+        try {
+            result = service.saveStudent("", "alex", 800);
+            assertEquals(5, students.spliterator().getExactSizeIfKnown());
+            assertEquals(1, result);
+        }catch (ValidationException e) {
+            assertEquals(null, result);
+        }
+    }
+
+    @Test
+    public void tc_5_InvalidName() {
+        Iterable<Student> students = service.findAllStudents();
+        int result = 0;
+        try {
+            result = service.saveStudent("10", "", 800);
+            assertEquals(5, students.spliterator().getExactSizeIfKnown());
+            assertEquals(1, result);
+        }catch (ValidationException e) {
+            assertEquals(null, result);
+        }
+    }
+
 }
