@@ -47,9 +47,9 @@ public class AssignmentTest {
     }
 
     @Test
-    public void addBadIdAssignment1() {
+    public void newName() {
         Iterable<Tema> assignments = service.findAllTeme();
-        int result = service.saveTema(null, "ssvv", 8, 6);
+        int result = service.saveTema("", "ssvv", 8, 6);
         assertEquals(1, result);
     }
 
