@@ -7,10 +7,7 @@ import org.example.repository.NotaXMLRepository;
 import org.example.repository.StudentXMLRepository;
 import org.example.repository.TemaXMLRepository;
 import org.example.service.Service;
-import org.example.validation.NotaValidator;
-import org.example.validation.StudentValidator;
-import org.example.validation.TemaValidator;
-import org.example.validation.Validator;
+import org.example.validation.*;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -72,5 +69,15 @@ public class AssignmentTest {
         Iterable<Tema> assignments = service.findAllTeme();
         int result = service.saveTema("4", "", 8, 5);
         assertEquals(1, result);
+    }
+
+    @Test
+    public void addRepoAssignment() {
+        Tema tema = new Tema("4", "ssvv", 5, 4);
+        try {
+            fileRepository2.save(tema);
+        } catch (ValidationException e) {
+            e.printStackTrace();
+        }
     }
 }
