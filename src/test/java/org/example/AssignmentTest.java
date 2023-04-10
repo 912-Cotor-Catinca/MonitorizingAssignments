@@ -31,42 +31,30 @@ public class AssignmentTest {
 
     @Test
     public void addGoodAssignment() {
-        Iterable<Tema> assignments = service.findAllTeme();
         int result = service.saveTema("4", "ssvv", 8, 6);
         assertEquals(0, result);
     }
 
     @Test
     public void addBadIdAssignment() {
-        Iterable<Tema> assignments = service.findAllTeme();
-        int result = service.saveTema("", "ssvv", 8, 6);
-        assertEquals(1, result);
-    }
-
-    @Test
-    public void newName() {
-        Iterable<Tema> assignments = service.findAllTeme();
         int result = service.saveTema("", "ssvv", 8, 6);
         assertEquals(1, result);
     }
 
     @Test
     public void addBadDeadlineAssignment() {
-        Iterable<Tema> assignments = service.findAllTeme();
         int result = service.saveTema("4", "ssvv", 0, 6);
         assertEquals(1, result);
     }
 
     @Test
     public void addBadStartlineAssignment() {
-        Iterable<Tema> assignments = service.findAllTeme();
         int result = service.saveTema("4", "ssvv", 8, 0);
         assertEquals(1, result);
     }
 
     @Test
     public void addBadDescriptionAssignment() {
-        Iterable<Tema> assignments = service.findAllTeme();
         int result = service.saveTema("4", "", 8, 5);
         assertEquals(1, result);
     }
