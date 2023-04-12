@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Entitati>
+    <student ID="11">
+        <Nume>alex</Nume>
+        <Grupa>932</Grupa>
+    </student>
     <student ID="1">
         <Nume>Ana</Nume>
         <Grupa>221</Grupa>

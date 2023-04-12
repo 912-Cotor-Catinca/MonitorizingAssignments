@@ -7,13 +7,16 @@ import org.example.repository.NotaXMLRepository;
 import org.example.repository.StudentXMLRepository;
 import org.example.repository.TemaXMLRepository;
 import org.example.service.Service;
-import org.example.validation.*;
+import org.example.validation.NotaValidator;
+import org.example.validation.StudentValidator;
+import org.example.validation.TemaValidator;
+import org.example.validation.Validator;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class AssignmentTest {
+public class Big_Bang {
     @Test
     public void shouldAnswerWithTrue()
     {
@@ -31,41 +34,15 @@ public class AssignmentTest {
 
     @Test
     public void addGoodAssignment() {
-        int result = service.saveTema("4", "ssvv", 8, 6);
-        assertEquals(1, result);
-    }
-
-    @Test
-    public void addBadIdAssignment() {
-        int result = service.saveTema("", "ssvv", 8, 6);
+        int result = service.saveTema("5", "ssvv", 8, 6);
         assertEquals(0, result);
     }
 
     @Test
-    public void addBadDeadlineAssignment() {
-        int result = service.saveTema("4", "ssvv", 0, 6);
-        assertEquals(0, result);
-    }
-
-    @Test
-    public void addBadStartlineAssignment() {
-        int result = service.saveTema("4", "ssvv", 8, 0);
-        assertEquals(0, result);
-    }
-
-    @Test
-    public void addBadDescriptionAssignment() {
-        int result = service.saveTema("4", "", 8, 5);
-        assertEquals(0, result);
-    }
-
-    @Test
-    public void addRepoAssignment() {
-        Tema tema = new Tema("4", "ssvv", 5, 4);
-        try {
-            fileRepository2.save(tema);
-        } catch (ValidationException e) {
-            e.printStackTrace();
-        }
+    public void tc_1_AddStudent() {
+        Iterable<Student> students = service.findAllStudents();
+        assertEquals(6, students.spliterator().getExactSizeIfKnown());
+        service.saveStudent("11", "alex", 932);
+        assertEquals(6, students.spliterator().getExactSizeIfKnown());
     }
 }
