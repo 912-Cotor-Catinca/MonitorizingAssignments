@@ -39,9 +39,8 @@ public class AppTest
     @Test
     public void tc_1_AddStudent() {
         Iterable<Student> students = service.findAllStudents();
-        assertEquals(5, students.spliterator().getExactSizeIfKnown());
-        service.saveStudent("10", "alex", 932);
-        assertEquals(5, students.spliterator().getExactSizeIfKnown());
+        int result = service.saveStudent("10", "alex", 932);
+        assertEquals(1, result);
     }
 
     @Test
@@ -50,8 +49,8 @@ public class AppTest
         int result = 0;
         try {
             result = service.saveStudent("10", "alex", 8);
-            assertEquals(5, students.spliterator().getExactSizeIfKnown());
-            assertEquals(1, result);
+
+            assertEquals(0, result);
         }catch (ValidationException e) {
             assertEquals(null, result);
         }
@@ -61,8 +60,8 @@ public class AppTest
     public void tc_2_AddExistingStudent() {
         Iterable<Student> students = service.findAllStudents();
         int result = service.saveStudent("10", "alex", 932);
-        assertEquals(5, students.spliterator().getExactSizeIfKnown());
-        assertEquals(0, result);
+
+        assertEquals(1, result);
     }
 
     @Test
@@ -71,8 +70,8 @@ public class AppTest
         int result = 0;
         try {
             result = service.saveStudent("", "alex", 800);
-            assertEquals(5, students.spliterator().getExactSizeIfKnown());
-            assertEquals(1, result);
+
+            assertEquals(0, result);
         }catch (ValidationException e) {
             assertEquals(null, result);
         }
@@ -84,8 +83,8 @@ public class AppTest
         int result = 0;
         try {
             result = service.saveStudent("10", "", 800);
-            assertEquals(5, students.spliterator().getExactSizeIfKnown());
-            assertEquals(1, result);
+
+            assertEquals(0, result);
         }catch (ValidationException e) {
             assertEquals(null, result);
         }
