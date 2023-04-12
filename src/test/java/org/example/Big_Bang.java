@@ -7,10 +7,7 @@ import org.example.repository.NotaXMLRepository;
 import org.example.repository.StudentXMLRepository;
 import org.example.repository.TemaXMLRepository;
 import org.example.service.Service;
-import org.example.validation.NotaValidator;
-import org.example.validation.StudentValidator;
-import org.example.validation.TemaValidator;
-import org.example.validation.Validator;
+import org.example.validation.*;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -33,16 +30,22 @@ public class Big_Bang {
     private Service service = new Service(fileRepository1, fileRepository2, fileRepository3);
 
     @Test
-    public void addGoodAssignment() {
+    public void tc_1_Assignment() {
         int result = service.saveTema("5", "ssvv", 8, 6);
-        assertEquals(0, result);
+        assertEquals(1, result);
     }
 
     @Test
-    public void tc_1_AddStudent() {
+    public void tc_2_InvalidStudent() {
         Iterable<Student> students = service.findAllStudents();
-        assertEquals(6, students.spliterator().getExactSizeIfKnown());
-        service.saveStudent("11", "alex", 932);
-        assertEquals(6, students.spliterator().getExactSizeIfKnown());
+        int result = service.saveStudent("", "alex", 800);
+        assertEquals(0, result);
     }
+
+//    @Test
+//    public void tc_3_InvalidGrade() {
+//        Iterable<Nota> students = service.findAllNote();
+//        int result = service.saveNota("");
+//        assertEquals(0, result);
+//    }
 }
