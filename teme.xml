@@ -10,6 +10,11 @@
         <Deadline>8</Deadline>
         <Startline>7</Startline>
     </tema>
+    <tema ID="13">
+        <Descriere>ssvv</Descriere>
+        <Deadline>8</Deadline>
+        <Startline>7</Startline>
+    </tema>
     <tema ID="3">
         <Descriere>gui</Descriere>
         <Deadline>9</Deadline>
@@ -22,6 +27,11 @@
     </tema>
     <tema ID="5">
         <Descriere>ssvv</Descriere>
+        <Deadline>8</Deadline>
+        <Startline>6</Startline>
+    </tema>
+    <tema ID="6">
+        <Descriere>oop</Descriere>
         <Deadline>8</Deadline>
         <Startline>6</Startline>
     </tema>

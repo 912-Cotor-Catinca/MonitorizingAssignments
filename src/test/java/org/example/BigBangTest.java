@@ -12,7 +12,6 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
 public class BigBangTest {
     @Test
     public void shouldAnswerWithTrue()
@@ -45,19 +44,46 @@ public class BigBangTest {
     @Test
     public void tc_3_InvalidGrade() {
         Iterable<Nota> students = service.findAllNote();
-        int result = service.saveNota("2", "1", 6.3, 7, "ok");
-        assertEquals(1, result);
+        int result = service.saveStudent("15", "alex", 800);
+        assertEquals(result, 1);
     }
 
     @Test
     public void tc_4_BigBangIntegration() {
         int result_tema = service.saveTema("5", "ssvv", 8, 6);
         assertEquals(1, result_tema);
-        Iterable<Student> students = service.findAllStudents();
         int result_student = service.saveStudent("", "alex", 800);
         assertEquals(0, result_student);
-        Iterable<Nota> grades = service.findAllNote();
-        int result = service.saveNota("2", "1", 6.3, 7, "ok");
+        int result1 = service.saveTema("13", "ssvv", 8, 7);
+        assertEquals(result1, 1);
+    }
+
+    @Test
+    public void tc_5_Increment1() {
+        Iterable<Student> students = service.findAllStudents();
+        int result = service.saveStudent("6", "alex", 932);
         assertEquals(1, result);
+    }
+
+    @Test
+    public void tc_6_Increment2() {
+        Iterable<Student> students = service.findAllStudents();
+        int result = service.saveStudent("7", "alex", 932);
+        assertEquals(1, result);
+
+        int result2 = service.saveTema("6", "oop", 8, 6);
+        assertEquals(1, result);
+    }
+
+    @Test
+    public void tc_7_Increment3() {
+        Iterable<Student> students = service.findAllStudents();
+        int result = service.saveStudent("7", "alex", 932);
+        assertEquals(1, result);
+
+        int result2 = service.saveTema("6", "oop", 8, 6);
+        assertEquals(1, result2);
+        int result3 = service.saveNota("7", "6", 9.5, 7, "ok");
+        assertEquals(1, result3);
     }
 }
